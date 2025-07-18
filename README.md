@@ -35,7 +35,7 @@ Vercel: https://user-management-rho-mocha.vercel.app/
 ### Clone the repository
 
 ```bash
-git clone https://github.com/balasubramaniaji01/user-management.git
+git clone https://github.com/k16022000/user_management
 cd user-management
 npm i or npm i --legacy-peer-deps
 # user_management

@@ -1,0 +1,117 @@
+.dataFlewViewWrapper {
+  margin: 2em;
+  background-color: var(--seconday-bg);
+  border-radius: 0.5em;
+
+  .searchBar {
+    text-align: end;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    >div:last-child {
+      display: flex;
+      gap: 1em;
+      align-items: center;
+    }
+  }
+
+  .viewController {
+    margin: 1em;
+  }
+
+  .dataFlexView {
+    .paginationWrapper {
+      padding: 1em;
+      display: flex;
+      justify-content: end;
+    }
+  }
+}
+
+.cardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 3em;
+  justify-content: flex-start;
+}
+
+.tableContainer {
+  display: flex;
+  overflow-x: auto;
+
+  >div {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .dataFlewViewWrapper {
+    margin: 1em;
+
+    .searchBar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5em;
+
+      >div:last-child {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5em;
+      }
+    }
+
+    // .viewController {
+    //   margin: 0.5em 0;
+    // }
+
+    .dataFlexView {
+      .paginationWrapper {
+        justify-content: center;
+      }
+    }
+  }
+
+  .cardContainer {
+    margin: 1em;
+    justify-content: center;
+  }
+}
+
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .dataFlewViewWrapper {
+    margin: 1.5em;
+
+    .searchBar {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 1em;
+
+      >div:last-child {
+        flex-wrap: wrap;
+      }
+    }
+
+    // .viewController {
+    //   margin: 1em 0;
+    // }
+  }
+
+  .cardContainer {
+    margin: 2em;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 1025px) {
+  .dataFlewViewWrapper {
+    margin: 2em;
+  }
+
+  .cardContainer {
+    margin: 3em;
+  }
+}

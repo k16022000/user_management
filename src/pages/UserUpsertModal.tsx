@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
 import { Modal, Button, Space } from 'antd';
 import { ProForm, ProFormText } from '@ant-design/pro-components';
-import { userService } from '../services/userService';
 import { useDispatch } from 'react-redux';
-import { setSingleUser, setUserList } from '../components/store/userListSlice';
+import { createUserRequest, updateUserRequest } from '../components/store/userListActions';
 
 interface FormValues {
   data: any;
@@ -14,7 +13,7 @@ interface FormValues {
   id: string;
 }
 
-interface UserCreateAndUpdateModalProps {
+interface UserUpsertModalProps {
   isModalOpen: boolean;
   onClose?: () => void;
   tableData: any[];
@@ -22,13 +21,7 @@ interface UserCreateAndUpdateModalProps {
   tableMetadata: any;
 }
 
-const UserCreateAndUpdateModal: React.FC<UserCreateAndUpdateModalProps> = ({
-  isModalOpen,
-  onClose,
-  tableData,
-  tableMetadata,
-  totalCount,
-}) => {
+const UserUpsertModal: React.FC<UserUpsertModalProps> = ({ isModalOpen, onClose }) => {
   const dispatch = useDispatch();
 
   const { email, first_name, last_name, avatar, id } =
@@ -37,59 +30,20 @@ const UserCreateAndUpdateModal: React.FC<UserCreateAndUpdateModalProps> = ({
       : { email: '', first_name: '', last_name: '', avatar: '', id: undefined };
   const isEdit = id;
 
-  const onSubmit = async (values: FormValues) => {
+  const onSubmit = (values: FormValues) => {
     if (isEdit) {
-      await userService.updateUser(isEdit || '', {
-        email: values.email,
-        first_name: values.first_name,
-        last_name: values.last_name,
-        avatar: values.avatar,
-      });
-      const updatedData = tableData.map(user =>
-        user.id === isEdit ? { ...user, ...values } : user
-      );
-
-      dispatch(
-        setUserList({
-          ...tableMetadata,
-          data: updatedData,
-        })
-      );
+      dispatch(updateUserRequest({ id: isEdit, data: values }));
     } else {
-      await userService.createUser({
-        email: values.email,
-        first_name: values.first_name,
-        last_name: values.last_name,
-        avatar: values.avatar,
-      });
-
-      const updatedData = [...tableData, { ...values, id: Number(tableData.length + 1) }];
-      dispatch(
-        setUserList({
-          ...tableData,
-          data: updatedData,
-          total: totalCount + 1,
-        })
-      );
+      dispatch(createUserRequest(values));
     }
+    onClose?.();
   };
 
   useEffect(() => {
-    userService.getSingleUser(id || '').then(res => {
-      const user = res.data as FormValues;
-      if (user) {
-        dispatch(
-          setSingleUser({
-            first_name: user.data.first_name,
-            last_name: user.data.last_name,
-            email: user.data.email,
-            avatar: user.data.avatar,
-            id: user.data.id,
-          })
-        );
-      }
-    });
-  }, []);
+    if (id) {
+      dispatch({ type: 'userList/getSingleUser', payload: id });
+    }
+  }, [id]);
 
   return (
     <Modal
@@ -157,4 +111,4 @@ const UserCreateAndUpdateModal: React.FC<UserCreateAndUpdateModalProps> = ({
   );
 };
 
-export default UserCreateAndUpdateModal;
+export default UserUpsertModal;

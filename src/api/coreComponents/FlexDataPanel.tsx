@@ -22,7 +22,7 @@ interface DataFlexViewProps {
   onActionButtonClick?: () => void;
 }
 
-const DataFlexView: React.FC<DataFlexViewProps> = ({
+const FlexDataPanel: React.FC<DataFlexViewProps> = ({
   tableData = [],
   tableColumns,
   renderCard,
@@ -129,14 +129,16 @@ const DataFlexView: React.FC<DataFlexViewProps> = ({
         </div>
 
         {view === 'table' ? (
-          <Table
-            rowKey="id"
-            columns={columns}
-            dataSource={paginatedData}
-            pagination={false}
-            loading={isLoading}
-            {...customTableProps}
-          />
+          <div className="tableContainer">
+            <Table
+              rowKey="id"
+              columns={columns}
+              dataSource={paginatedData}
+              pagination={false}
+              loading={isLoading}
+              {...customTableProps}
+            />
+          </div>
         ) : (
           <div className="cardContainer">
             {paginatedData.map(item =>
@@ -171,4 +173,4 @@ const DataFlexView: React.FC<DataFlexViewProps> = ({
   );
 };
 
-export default DataFlexView;
+export default FlexDataPanel;

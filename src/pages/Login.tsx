@@ -4,28 +4,24 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useSelector, useDispatch } from 'react-redux';
 import './styles/login.scss';
 import { RootState } from '../components/store';
-import { userService } from '../services/userService';
-import { setAuthenticated } from '../components/store/authSlice';
+import { loginRequest } from '../components/store/authActions';
 
 const Login = () => {
   const theme = useSelector((state: RootState) => state.theme.mode);
+  const error = useSelector((state: RootState) => state.auth.error);
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
 
   const handleSubmit = async (values: { email: string; password: string }) => {
-    try {
-      const res = await userService.login({ email: values.email, password: values.password });
-
-      if (res) {
-        dispatch(setAuthenticated(true));
-      }
-    } catch {
-      api.error({
-        message: 'Login Failed',
-        description: 'Invalid email or password.',
-      });
-    }
+    dispatch(loginRequest(values));
   };
+
+  if (error) {
+    api.error({
+      message: 'Login Failed',
+      description: error,
+    });
+  }
 
   return (
     <div className={`loginContainer ${theme}`}>

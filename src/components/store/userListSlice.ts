@@ -1,12 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+interface User {
+  id: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  avatar: string;
+}
 interface UserListState {
   userList: {
     page: number;
     per_page: number;
     total: number;
     total_pages: number;
-    data: string[];
+    data: User[];
   };
   isLoading: boolean;
   userDetails: {

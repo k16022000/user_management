@@ -1,14 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import { Button, Card, Modal, Tooltip } from 'antd';
-import DataFlexView from '../api/commonComponents/DataFlexView';
+import FlexDataPanel from '../api/coreComponents/FlexDataPanel';
 import { setLoading, setUserList } from '../components/store/userListSlice';
 import { userService } from '../services/userService';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../components/store';
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import './styles/userList.scss';
-import Header from '../api/commonComponents/Header';
-import UserCreateAndUpdateModal from './UserCreateAndUpdateModal';
+import Header from '../api/coreComponents/Header';
+import UserUpsertModal from './UserUpsertModal';
 
 const UserList = () => {
   const dispatch = useDispatch();
@@ -146,7 +146,7 @@ const UserList = () => {
   return (
     <div>
       <Header />
-      <DataFlexView
+      <FlexDataPanel
         tableData={tableData?.data || []}
         handleDataRefresh={fetchUserList}
         searchable
@@ -160,7 +160,7 @@ const UserList = () => {
         onActionButtonClick={createUser}
       />
       {isModalOpen && (
-        <UserCreateAndUpdateModal
+        <UserUpsertModal
           totalCount={tableData?.total || 0}
           tableData={tableData?.data || []}
           tableMetadata={tableData}
