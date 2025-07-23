@@ -1,0 +1,17 @@
+flowchart TD
+    A["Redux Action Dispatched"] --> B["Redux-Saga Middleware"]
+    B --> C{"rootSaga"}
+    C --> D["authSaga"]
+    C --> E["userListSaga"]
+
+    %% authSaga workflow
+    D --> F["authSaga Watches for Auth Actions"]
+    F --> G["authSaga Handles Side Effects (API calls, etc.)"]
+    G --> H["authSaga Dispatches Success/Failure Actions"]
+    H --> I["Reducers Update Auth State"]
+
+    %% userListSaga workflow
+    E --> J["userListSaga Watches for User List Actions"]
+    J --> K["userListSaga Handles Side Effects (API calls, etc.)"]
+    K --> L["userListSaga Dispatches Success/Failure Actions"]
+    L --> M["Reducers Update User List State"]

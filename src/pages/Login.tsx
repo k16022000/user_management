@@ -9,7 +9,7 @@ import { loginRequest } from '../components/store/authActions';
 const Login = () => {
   const theme = useSelector((state: RootState) => state.theme.mode);
   const error = useSelector((state: RootState) => state.auth.error);
-  const [api, contextHolder] = notification.useNotification();
+  const [toast, toastContainer] = notification.useNotification();
   const dispatch = useDispatch();
 
   const handleSubmit = async (values: { email: string; password: string }) => {
@@ -17,7 +17,7 @@ const Login = () => {
   };
 
   if (error) {
-    api.error({
+    toast.error({
       message: 'Login Failed',
       description: error,
     });
@@ -25,7 +25,7 @@ const Login = () => {
 
   return (
     <div className={`loginContainer ${theme}`}>
-      {contextHolder}
+      {toastContainer}
       <Card title="Login">
         <ProForm
           onFinish={handleSubmit}
