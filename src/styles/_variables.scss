@@ -1,0 +1,31 @@
+$light-theme: (
+  bg: #dddddd,
+  text: #1a1818,
+  border: #cccccc,
+  card-bg: #f9f9f9,
+  btn-bg: #e0e0e0,
+  btn-text: #1a1a1a,
+  input-bg: #fff,
+  input-border: #ccc,
+  header-bg: #001629,
+  header-text: #ffffff,
+  logout-bg: #fd4c4e,
+  seconday-bg: #ffff,
+  hover-bg: #b0a8a8,
+);
+
+$dark-theme: (
+  bg: #1e1e1e,
+  text: #f5f5f5,
+  border: #444444,
+  card-bg: #2a2a2a,
+  btn-bg: #333333,
+  btn-text: #f5f5f5,
+  input-bg: #2b2b2b,
+  input-border: #555555,
+  header-bg: #dedede,
+  header-text: #242424,
+  logout-bg: #fd4c4e,
+  seconday-bg: #000000,
+  hover-bg: #b0a8a8,
+);

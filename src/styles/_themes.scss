@@ -1,0 +1,25 @@
+@use "variables" as *;
+
+@mixin apply-theme($theme) {
+  #{--bg}: map-get($theme, bg);
+  #{--text}: map-get($theme, text);
+  #{--border}: map-get($theme, border);
+  #{--card}: map-get($theme, card-bg);
+  #{--btn-bg}: map-get($theme, btn-bg);
+  #{--btn-text}: map-get($theme, btn-text);
+  #{--input-bg}: map-get($theme, input-bg);
+  #{--input-border}: map-get($theme, input-border);
+  #{--header-bg}: map-get($theme, header-bg);
+  #{--header-text}: map-get($theme, header-text);
+  #{--logout-bg}: map-get($theme, logout-bg);
+  #{--seconday-bg}: map-get($theme, seconday-bg);
+  #{--hover-bg}: map-get($theme, hover-bg);
+}
+
+:root {
+  @include apply-theme($light-theme);
+}
+
+[data-theme="dark"] {
+  @include apply-theme($dark-theme);
+}

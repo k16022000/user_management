@@ -1,0 +1,84 @@
+@use '../../../styles/themes';
+
+.headerWrapper {
+  background-color: var(--header-bg);
+  color: var(--header-text);
+  padding: 1em 2em;
+
+  >div {
+    display: flex;
+    justify-content: space-between;
+
+    >img {
+      width: 10%;
+    }
+
+    >div:last-child {
+      display: flex;
+      justify-content: end;
+      gap: 1em;
+      align-items: center;
+
+      >span:last-child {
+        background-color: var(--logout-bg);
+        padding: 0.3em;
+
+        >svg {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .headerWrapper {
+    padding: 1em;
+
+    >div {
+      display: flex;
+      justify-content: space-between;
+      gap: 1em;
+
+      >img {
+        width: 20%;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .headerWrapper {
+    padding: 1em 1.5em;
+
+    >div {
+      >img {
+        width: 20%;
+      }
+
+      >div:last-child {
+        gap: 0.8em;
+
+        >span:last-child {
+          padding: 0.4em;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  .headerWrapper {
+    padding: 1em 2em;
+
+    >div {
+      >img {
+        width: 10%;
+      }
+
+      >div:last-child {
+        gap: 1em;
+      }
+    }
+  }
+}

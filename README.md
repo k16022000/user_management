@@ -1,6 +1,6 @@
 # React User Management System
 
-A React application for user authentication and user management, including user list, CRUD operations (Create, Read, Update, Delete), pagination, and search functionality. This application utilizes **Redux** for state management, **React Router** for navigation, and **Ant Design** for UI components. The application is built using **TypeScript** to enhance type safety and code quality.
+A React application for user authentication and user management, including user list, CRUD operations (Create, Read, Update, Delete), pagination, and search functionality. This application utilizes **Redux-Saga** for state management, **React Router** for navigation, and **Ant Design** for UI components. The application is built using **TypeScript** to enhance type safety and code quality.
 
 Vercel: https://usermanagement-kohl.vercel.app/
 
@@ -17,7 +17,7 @@ Vercel: https://usermanagement-kohl.vercel.app/
 
 - **React** (with Create React App)
 - **Redux** (for state management)
-- **Redux Thunk** (for asynchronous actions)
+- **Redux Saga** (for asynchronous actions)
 - **React Router** (for routing and page navigation)
 - **Ant Design** (for UI components)
 - **Axios** (for API calls)
@@ -37,7 +37,6 @@ Vercel: https://usermanagement-kohl.vercel.app/
 ```bash
 git clone https://github.com/k16022000/user_management
 cd user-management
-npm i or npm i --legacy-peer-deps
-# user_management
-# user_management
-# user_management
+npm i
+#or
+npm i --legacy-peer-deps
